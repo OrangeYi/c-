@@ -26,12 +26,18 @@ namespace MyFirstWebApp
 
         protected void okButton_Click(object sender, EventArgs e)
         {
+            //int i = 0;
+            if (!(int.TryParse(guessNumber.Text, out int i)))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please enter an integer!');</script>");
+                return;
+            }
             if(string.IsNullOrEmpty(guessNumber.Text) || string.IsNullOrEmpty(betBox.Text))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please fill a number between 1-99 or make a bet!!');</script>");
                 return;
             }
-            if(Convert.ToInt32(betBox.Text) > Convert.ToInt32(amountLabel.Text))
+            if(Convert.ToInt32(betBox.Text) > (float)Convert.ToDouble(amountLabel.Text))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Your bet is over your amount!!!');</script>");
                 return;
@@ -47,24 +53,23 @@ namespace MyFirstWebApp
             int randomnumber = ran.Next(1, 99);
             if(guessnumber > randomnumber)
             {
-                float win = ((100f - guessnumber) / 100f) * (1 + Convert.ToInt32(betBox.Text)) + Convert.ToInt32(amountLabel.Text);
-                int winint = (int)win;
-                amountLabel.Text = winint.ToString();
+                float win = ((100f - guessnumber) / 100f) * (1 + (float)Convert.ToDouble(betBox.Text)) + (float)Convert.ToDouble(amountLabel.Text);
+                amountLabel.Text = win.ToString();
                 resultLabel.Text = "Your win and the random is " + randomnumber;
             }
             else
             {
                 resultLabel.Text = "Your lose and the random is " + randomnumber;
-                int resultamount = Convert.ToInt32(amountLabel.Text) - Convert.ToInt32(betBox.Text);
+                float resultamount = (float) Convert.ToDouble(amountLabel.Text) - (float) Convert.ToDouble(betBox.Text);
                 amountLabel.Text = resultamount.ToString();
             }
         }
 
         protected void addFund_Click(object sender, EventArgs e)
         {
-            int addedfund = Convert.ToInt32(fundBox.Text);
+            float addedfund = (float) Convert.ToDouble(fundBox.Text);
 
-            int resultfund = addedfund + Convert.ToInt32(amountLabel.Text);
+            float resultfund = addedfund + (float) Convert.ToDouble(amountLabel.Text);
 
             amountLabel.Text = resultfund.ToString();
         }
