@@ -53,3 +53,4 @@ D:\vs projecs\MyFirstWebAPP\MyFirstWebApp\obj\Release\MyFirstWebApp.csproj.CoreC
 D:\vs projecs\MyFirstWebAPP\MyFirstWebApp\obj\Release\MyFirstWebApp.csproj.CopyComplete
 D:\vs projecs\MyFirstWebAPP\MyFirstWebApp\obj\Release\MyFirstWebApp.dll
 D:\vs projecs\MyFirstWebAPP\MyFirstWebApp\obj\Release\MyFirstWebApp.pdb
+D:\vs projecs\MyFirstWebAPP\MyFirstWebApp\obj\Release\MyFirstWebApp.csprojAssemblyReference.cache
